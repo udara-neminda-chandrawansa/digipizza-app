@@ -77,7 +77,7 @@ function Footer() {
         </div>
 
         <p className="mt-12 text-center text-sm text-gray-500 lg:text-right">
-          Copyright DigiPizza &copy; 2024. All rights reserved.
+          Copyright <a href="https://github.com/udara-neminda-chandrawansa">Udara Neminda Chandrawansa</a> &copy; 2024. All rights reserved.
         </p>
       </div>
     </footer>

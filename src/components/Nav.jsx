@@ -20,7 +20,7 @@ function Nav() {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <CNavbar expand="lg" className="bg-body-tertiary">
+      <CNavbar expand="lg" id="top" className="bg-body-tertiary">
         <CContainer fluid>
           <CNavbarBrand href="/"><img src={logo} alt="logo" className="w-20"/></CNavbarBrand>
           <CNavbarToggler

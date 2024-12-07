@@ -8,7 +8,7 @@ import Error from './pages/Error';
 
 function App() {
   return (
-    <div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col text-start min-h-screen'>
     <Nav></Nav>
       <Switch>
         <Route path="/" component={Landing} />
