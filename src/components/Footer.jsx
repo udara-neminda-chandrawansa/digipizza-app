@@ -1,4 +1,6 @@
 import logo from "/logo.png";
+import { Link } from "wouter";
+
 function Footer() {
   return (
     <footer className="bg-gray-100">
@@ -38,40 +40,23 @@ function Footer() {
           </div>
 
           <ul className="flex flex-wrap justify-center gap-6 mt-12 md:gap-8 lg:mt-0 lg:justify-end lg:gap-12">
-            <li>
-              <a
-                className="text-gray-700 transition hover:text-gray-700/75"
-                href="/about"
-              >
-                About
-              </a>
-            </li>
 
             <li>
-              <a
-                className="text-gray-700 transition hover:text-gray-700/75"
-                href="/services"
-              >
-                Services
-              </a>
-            </li>
-
-            <li>
-              <a
+              <Link
                 className="text-gray-700 transition hover:text-gray-700/75"
                 href="/signup"
               >
                 Signup
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
+              <Link
                 className="text-gray-700 transition hover:text-gray-700/75"
                 href="/login"
               >
                 Login
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

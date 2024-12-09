@@ -36,9 +36,6 @@ function Nav() {
                 </CNavLink>
               </CNavItem>
               <CNavItem>
-                <CNavLink href="/about">About Us</CNavLink>
-              </CNavItem>
-              <CNavItem>
                 <CNavLink href="/login">Login</CNavLink>
               </CNavItem>
               <CDropdown variant="nav-item" popper={false}>
