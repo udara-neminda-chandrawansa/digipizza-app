@@ -2,7 +2,7 @@ import logo from "/logo.png";
 function Footer() {
   return (
     <footer className="bg-gray-100">
-      <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
+      <div className="relative max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 lg:pt-24">
         <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
           {/*Top Btn*/}
           <a
@@ -32,12 +32,12 @@ function Footer() {
               <img src={logo} alt="logo" className="w-[100px] aspect-square"/>
             </div>
 
-            <p className="mx-auto mt-6 max-w-md leading-relaxed text-gray-500 lg:text-left">
+            <p className="max-w-md mx-auto mt-6 leading-relaxed text-gray-500 lg:text-start max-lg:text-center">
               Affordable pizza, always!
             </p>
           </div>
 
-          <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:mt-0 lg:justify-end lg:gap-12">
+          <ul className="flex flex-wrap justify-center gap-6 mt-12 md:gap-8 lg:mt-0 lg:justify-end lg:gap-12">
             <li>
               <a
                 className="text-gray-700 transition hover:text-gray-700/75"
@@ -76,7 +76,7 @@ function Footer() {
           </ul>
         </div>
 
-        <p className="mt-12 text-center text-sm text-gray-500 lg:text-right">
+        <p className="mt-12 text-sm text-center text-gray-500 lg:text-right">
           Copyright <a href="https://github.com/udara-neminda-chandrawansa">Udara Neminda Chandrawansa</a> &copy; 2024. All rights reserved.
         </p>
       </div>
