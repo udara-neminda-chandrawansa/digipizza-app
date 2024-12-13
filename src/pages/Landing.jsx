@@ -1,9 +1,8 @@
 import banner from "./../assets/Landing/banner.jpg";
 import about_img from "./../assets/Landing/about.jpg";
-import sample_pizza from "./../assets/Landing/sample-pizza.jpg";
 import cta from "./../assets/Landing/cta_bg.jpg";
-import LargeProdCard from "../components/LargeProdCard";
 import FeedbackGrid from "../components/FeedbackGrid";
+import PizzaLoader from "../components/PizzaLoader";
 
 function Landing() {
   const feedbacks = [
@@ -115,57 +114,8 @@ function Landing() {
               Select from a range of pre-made choices to get the perfect pizza!
             </p>
           </header>
-
-          <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
-            <LargeProdCard
-              header={"Sample Pizza"}
-              pid={"p100001"}
-              price={"Rs. 1500.00"}
-              image={sample_pizza}
-            ></LargeProdCard>
-            <LargeProdCard
-              header={"Sample Pizza"}
-              pid={"p100001"}
-              price={"Rs. 1500.00"}
-              image={sample_pizza}
-            ></LargeProdCard>
-            <LargeProdCard
-              header={"Sample Pizza"}
-              pid={"p100001"}
-              price={"Rs. 1500.00"}
-              image={sample_pizza}
-            ></LargeProdCard>
-            <LargeProdCard
-              header={"Sample Pizza"}
-              pid={"p100001"}
-              price={"Rs. 1500.00"}
-              image={sample_pizza}
-            ></LargeProdCard>
-            <LargeProdCard
-              header={"Sample Pizza"}
-              pid={"p100001"}
-              price={"Rs. 1500.00"}
-              image={sample_pizza}
-            ></LargeProdCard>
-            <LargeProdCard
-              header={"Sample Pizza"}
-              pid={"p100001"}
-              price={"Rs. 1500.00"}
-              image={sample_pizza}
-            ></LargeProdCard>
-            <LargeProdCard
-              header={"Sample Pizza"}
-              pid={"p100001"}
-              price={"Rs. 1500.00"}
-              image={sample_pizza}
-            ></LargeProdCard>
-            <LargeProdCard
-              header={"Sample Pizza"}
-              pid={"p100001"}
-              price={"Rs. 1500.00"}
-              image={sample_pizza}
-            ></LargeProdCard>
-          </ul>
+          {/*pizza loader component*/}
+          <PizzaLoader></PizzaLoader>
         </div>
       </section>
       {/*Feedback Grid*/}

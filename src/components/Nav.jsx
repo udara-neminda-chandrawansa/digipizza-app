@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import logo from "/logo.png";
 import {
   CNavbar,
@@ -7,11 +8,10 @@ import {
   CCollapse,
   CNavbarNav,
   CNavItem,
-  CNavLink,
   CDropdown,
   CDropdownToggle,
   CDropdownMenu,
-  CDropdownItem
+  CDropdownItem,
 } from "@coreui/react";
 
 import { useState } from "react";
@@ -22,27 +22,45 @@ function Nav() {
     <>
       <CNavbar expand="lg" id="top" className="bg-body-tertiary">
         <CContainer fluid>
-          <CNavbarBrand href="/"><img src={logo} alt="logo" className="w-20"/></CNavbarBrand>
+          <CNavbarBrand href="/">
+            <img src={logo} alt="logo" className="w-20" />
+          </CNavbarBrand>
           <CNavbarToggler
             aria-label="Toggle navigation"
             aria-expanded={visible}
             onClick={() => setVisible(!visible)}
           />
           <CCollapse className="navbar-collapse" visible={visible}>
-            <CNavbarNav>
-              <CNavItem>
-                <CNavLink href="/" active>
+            <CNavbarNav className="items-center gap-6">
+              <CNavItem className="p-0 m-0 h-fit">
+                <Link href="/" className="p-0 m-0 text-gray-500 no-underline">
                   Home
-                </CNavLink>
+                </Link>
               </CNavItem>
               <CNavItem>
-                <CNavLink href="/login">Login</CNavLink>
+                <Link
+                  href="/login"
+                  className="p-0 m-0 text-gray-500 no-underline"
+                >
+                  Login
+                </Link>
               </CNavItem>
               <CDropdown variant="nav-item" popper={false}>
                 <CDropdownToggle>Sign Up</CDropdownToggle>
                 <CDropdownMenu>
-                  <CDropdownItem href="#">Customer</CDropdownItem>
-                  <CDropdownItem href="#">Delivery Person</CDropdownItem>
+                  <Link
+                    href="/signup/customer"
+                    className="p-0 m-0 text-gray-500 no-underline"
+                  >
+                    <CDropdownItem>Customer</CDropdownItem>
+                  </Link>
+
+                  <Link
+                    href="/signup/delivery-person"
+                    className="p-0 m-0 text-gray-500 no-underline"
+                  >
+                    <CDropdownItem>Delivery Person</CDropdownItem>
+                  </Link>
                 </CDropdownMenu>
               </CDropdown>
             </CNavbarNav>
