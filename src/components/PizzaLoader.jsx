@@ -1,4 +1,4 @@
-import { CSpinner } from '@coreui/react'
+import { CSpinner } from "@coreui/react";
 import { useState, useEffect } from "react";
 import LargeProdCard from "./LargeProdCard";
 import { fetchPizzas } from "../services/PizzaApiService";
@@ -28,7 +28,12 @@ function PizzaLoader() {
   }, []);
 
   if (loading) {
-    return <p className='flex gap-3'><CSpinner/>Loading pizzas...</p>;
+    return (
+      <div className="flex gap-3">
+        <CSpinner />
+        <p>Loading pizzas...</p>
+      </div>
+    );
   }
 
   return (

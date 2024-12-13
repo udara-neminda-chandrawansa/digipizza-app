@@ -3,6 +3,7 @@ import about_img from "./../assets/Landing/about.jpg";
 import cta from "./../assets/Landing/cta_bg.jpg";
 import FeedbackGrid from "../components/FeedbackGrid";
 import PizzaLoader from "../components/PizzaLoader";
+import { Link } from "wouter";
 
 function Landing() {
   const feedbacks = [
@@ -54,19 +55,19 @@ function Landing() {
             </p>
 
             <div className="flex flex-wrap gap-4 mt-8 text-center">
-              <a
+              <Link
                 href="/login"
                 className="block w-full rounded bg-[#EC0000] no-underline px-12 py-3 text-sm font-medium text-white shadow hover:bg-[#EC0000] focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
               >
                 Place an Order
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/signup"
                 className="block w-full rounded bg-white no-underline px-12 py-3 text-sm font-medium text-[#EC0000] shadow hover:text-[#EC0000] focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
               >
                 Register
-              </a>
+              </Link>
             </div>
           </div>
         </div>

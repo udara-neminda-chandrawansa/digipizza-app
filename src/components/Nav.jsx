@@ -11,7 +11,6 @@ import {
   CDropdown,
   CDropdownToggle,
   CDropdownMenu,
-  CDropdownItem,
 } from "@coreui/react";
 
 import { useState } from "react";
@@ -22,8 +21,10 @@ function Nav() {
     <>
       <CNavbar expand="lg" id="top" className="bg-body-tertiary">
         <CContainer fluid>
-          <CNavbarBrand href="/">
-            <img src={logo} alt="logo" className="w-20" />
+          <CNavbarBrand>
+            <Link href="/">
+              <img src={logo} alt="logo" className="w-20" />
+            </Link>
           </CNavbarBrand>
           <CNavbarToggler
             aria-label="Toggle navigation"
@@ -47,19 +48,19 @@ function Nav() {
               </CNavItem>
               <CDropdown variant="nav-item" popper={false}>
                 <CDropdownToggle>Sign Up</CDropdownToggle>
-                <CDropdownMenu>
+                <CDropdownMenu className="flex flex-col h-[100px]">
                   <Link
                     href="/signup/customer"
                     className="p-0 m-0 text-gray-500 no-underline"
                   >
-                    <CDropdownItem>Customer</CDropdownItem>
+                    <p className="p-1 px-3 hover:bg-[#FFA100] hover:text-white">Customer</p>
                   </Link>
 
                   <Link
                     href="/signup/delivery-person"
                     className="p-0 m-0 text-gray-500 no-underline"
                   >
-                    <CDropdownItem>Delivery Person</CDropdownItem>
+                    <p className="p-1 px-3 hover:bg-[#FFA100] hover:text-white">Delivery Person</p>
                   </Link>
                 </CDropdownMenu>
               </CDropdown>

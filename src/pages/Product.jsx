@@ -29,7 +29,7 @@ function Product({ pid }) {
       } catch (error) {
         console.error("Error fetching pizza:", error);
         setResponse("Error fetching pizza.");
-      } finally{
+      } finally {
         setLoading(false);
       }
       console.log(response);
@@ -43,15 +43,22 @@ function Product({ pid }) {
   }, []);
 
   if (loading) {
-    return <p className='flex gap-3 p-6'><CSpinner/>Loading pizza...</p>;
+    return (
+      <div className="flex gap-3 p-6">
+        <CSpinner />
+        <p>Loading pizza...</p>
+      </div>
+    );
   }
 
   return (
     <div className="flex flex-col justify-center flex-grow gap-3 p-12">
-        <span className="flex items-end justify-between">
-            <button className="bg-[#EC0000] p-2 text-white shadow transition hover:bg-[#FFA100] rounded-lg h-fit">Order Now</button>
-        <img src={sample_pizza} alt="" className="w-[200px] rounded-full"/>
-        </span>
+      <span className="flex items-end justify-between">
+        <button className="bg-[#EC0000] p-2 text-white shadow transition hover:bg-[#FFA100] rounded-lg h-fit">
+          Order Now
+        </button>
+        <img src={sample_pizza} alt="" className="w-[200px] rounded-full" />
+      </span>
       <div className="flow-root border">
         <dl className="-my-3 text-sm divide-y divide-gray-100">
           <div className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4">
@@ -77,7 +84,9 @@ function Product({ pid }) {
 
           <div className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4">
             <dt className="p-1 font-medium text-gray-900">Sauces</dt>
-            <dd className="p-1 text-gray-700 sm:col-span-2">{pizzaDTO.sauces}</dd>
+            <dd className="p-1 text-gray-700 sm:col-span-2">
+              {pizzaDTO.sauces}
+            </dd>
           </div>
 
           <div className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4">
