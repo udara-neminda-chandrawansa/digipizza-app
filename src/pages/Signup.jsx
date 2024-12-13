@@ -3,7 +3,6 @@ import { saveUser } from "../services/UserApiService";
 import { useState } from "react";
 
 function Signup({ type }) {
-  const [showAlert, setShowAlert] = useState(false);
   const [userDTO, setUserDTO] = useState({
     id: "",
     username: "",
@@ -29,7 +28,7 @@ function Signup({ type }) {
       try {
         const res = await saveUser(userDTO);
         console.log("User saved successfully:", res);
-        setShowAlert(true);
+        alert("Signup successfull!");
         setUserDTO({
           id: "",
           username: "",
@@ -38,7 +37,6 @@ function Signup({ type }) {
           telNo: "",
         });
         setConfirmPsw("");
-        setTimeout(() => setShowAlert(false), 3000);
       } catch (error) {
         console.error("Error saving user:", error);
       }
@@ -47,52 +45,8 @@ function Signup({ type }) {
     }
   };
 
-  const successAlert = showAlert && (
-    <div
-      id="alert-3"
-      className="absolute flex items-center p-4 mb-4 text-green-800 rounded-lg top-5 bg-green-50"
-      role="alert"
-    >
-      <svg
-        className="flex-shrink-0 w-4 h-4"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-      >
-        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-      </svg>
-      <span className="sr-only">Info</span>
-      <div className="text-sm font-medium ms-3">Signed Up successfully!</div>
-      <button
-        type="button"
-        className="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8"
-        onClick={() => setShowAlert(false)} // Close alert manually
-        aria-label="Close"
-      >
-        <span className="sr-only">Close</span>
-        <svg
-          className="w-3 h-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 14"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-          />
-        </svg>
-      </button>
-    </div>
-  );
-
   return (
     <div className="flex flex-col items-center justify-center flex-grow gap-3 p-6">
-      {successAlert}
       <form className="p-6 my-6 border rounded-lg" onSubmit={handleSaveUser}>
         <h1>Sign Up as a {type}</h1>
         <div className="grid gap-6 mt-6 mb-6 md:grid-cols-2">
@@ -155,9 +109,20 @@ function Signup({ type }) {
         <div className="mb-6">
           <label
             htmlFor="password"
-            className="block mb-2 text-sm font-medium text-gray-900"
+            className="flex justify-between mb-2 text-sm font-medium text-gray-900"
           >
             Password
+            <label className="inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                className="sr-only peer"
+                onChange={(e) => {
+                  const passwordInput = document.getElementById("password");
+                  passwordInput.type = e.target.checked ? "text" : "password";
+                }}
+              />
+              <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+            </label>
           </label>
           <input
             type="password"
@@ -173,9 +138,20 @@ function Signup({ type }) {
         <div className="mb-6">
           <label
             htmlFor="confirm_password"
-            className="block mb-2 text-sm font-medium text-gray-900"
+            className="flex justify-between mb-2 text-sm font-medium text-gray-900"
           >
             Confirm password
+            <label className="inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                className="sr-only peer"
+                onChange={(e) => {
+                  const passwordInput2 = document.getElementById("confirm_password");
+                  passwordInput2.type = e.target.checked ? "text" : "password";
+                }}
+              />
+              <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+            </label>
           </label>
           <input
             type="password"

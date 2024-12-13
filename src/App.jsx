@@ -8,6 +8,8 @@ import Error from "./pages/Error";
 import Product from "./pages/Product";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import CustomerDash from "./pages/Customer";
+import { useState } from "react";
 
 function App() {
   return (
@@ -19,8 +21,8 @@ function App() {
         <Route path="/signup/:type">
           {(params) => <Signup type={params.type} />}
         </Route>
-        <Route path="/users/:name">
-          {(params) => <>Hello, {params.name}!</>}
+        <Route path="/users/:id">
+          {(params) => <CustomerDash uid={params.id}/>}
         </Route>
         <Route path="/products/:id">
           {(params) => <Product pid={params.id} />}
