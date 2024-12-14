@@ -1,6 +1,10 @@
 import { fetchUserByID } from "../services/UserApiService";
 import { useEffect, useState } from "react";
+import { Link } from "wouter";
+import ManageUser from "../components/ManageUser";
+
 function CustomerDash({ uid }) {
+  const [openItem, setOpenItem] = useState("General");
   // for storing user info after fetching from db
   const [userDTO, setUserDTO] = useState({
     id: "",
@@ -14,7 +18,7 @@ function CustomerDash({ uid }) {
   useEffect(() => {
     handleFetchUserByID();
   }, []);
-  
+
   // for fetching user info from db
   const handleFetchUserByID = async () => {
     if (uid) {
@@ -32,66 +36,24 @@ function CustomerDash({ uid }) {
     }
   };
   return (
-    <div className="flex-grow">
+    <div className="flex flex-grow">
+      {/*sidebar*/}
       <div className="flex flex-col justify-between w-1/6 h-screen bg-white border-e">
         <div className="px-4 py-6">
           <ul className="mt-6 space-y-1">
             <li>
               <a
-                href="#"
-                className="block px-4 py-2 text-sm font-medium text-gray-700 no-underline bg-gray-100 rounded-lg"
+                onClick={() => setOpenItem("General")}
+                className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
               >
                 General
               </a>
             </li>
 
             <li>
-              <details className="group [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between px-4 py-2 text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700">
-                  <span className="text-sm font-medium"> Teams </span>
-
-                  <span className="transition duration-300 shrink-0 group-open:-rotate-180">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="size-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-
-                <ul className="px-4 mt-2 space-y-1">
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                    >
-                      Banned Users
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                    >
-                      Calendar
-                    </a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-
-            <li>
               <a
-                href="#"
-                className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                onClick={() => setOpenItem("Billing")}
+                className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
               >
                 Billing
               </a>
@@ -99,8 +61,8 @@ function CustomerDash({ uid }) {
 
             <li>
               <a
-                href="#"
-                className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                onClick={() => setOpenItem("Invoices")}
+                className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
               >
                 Invoices
               </a>
@@ -130,30 +92,20 @@ function CustomerDash({ uid }) {
                 <ul className="px-4 mt-2 space-y-1">
                   <li>
                     <a
-                      href="#"
-                      className="block px-4 py-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                      onClick={() => setOpenItem("ManageUser")}
+                      className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
                     >
-                      Details
+                      Manage
                     </a>
                   </li>
 
                   <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                    >
-                      Security
-                    </a>
-                  </li>
-
-                  <li>
-                    <form action="#">
-                      <button
-                        type="submit"
-                        className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700"
-                      >
-                        Logout
-                      </button>
+                    <form>
+                      <Link href="/login">
+                        <button className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700">
+                          Logout
+                        </button>
+                      </Link>
                     </form>
                   </li>
                 </ul>
@@ -178,6 +130,10 @@ function CustomerDash({ uid }) {
             </div>
           </a>
         </div>
+      </div>
+      {/*main content*/}
+      <div className="w-5/6">
+        {openItem === "ManageUser" ? <ManageUser id={uid} type={"Customer"}/> : ""}
       </div>
     </div>
   );
