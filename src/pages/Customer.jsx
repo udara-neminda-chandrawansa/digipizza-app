@@ -2,6 +2,7 @@ import { fetchUserByID } from "../services/UserApiService";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import ManageUser from "../components/ManageUser";
+import BuildPizza from "../components/BuildPizza";
 
 function CustomerDash({ uid }) {
   const [openItem, setOpenItem] = useState("General");
@@ -35,16 +36,18 @@ function CustomerDash({ uid }) {
       window.location.href = "/login";
     }
   };
+  
   return (
-    <div className="flex flex-grow">
+    <div className="flex flex-grow max-sm:flex-col">
       {/*sidebar*/}
-      <div className="flex flex-col justify-between w-1/6 h-screen bg-white border-e">
-        <div className="px-4 py-6">
+      <div className="flex flex-col justify-between w-1/6 h-screen bg-white max-md:w-1/5 border-e max-md:text-xs max-sm:h-1/6 max-sm:w-full">
+      {/*dash btns*/}
+        <div className="px-2 py-2">
           <ul className="mt-6 space-y-1">
             <li>
               <a
                 onClick={() => setOpenItem("General")}
-                className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
+                className="block px-4 py-2 font-medium text-gray-500 no-underline rounded-lg cursor-pointer max-md:px-1 hover:bg-gray-100 hover:text-gray-700"
               >
                 General
               </a>
@@ -52,26 +55,26 @@ function CustomerDash({ uid }) {
 
             <li>
               <a
-                onClick={() => setOpenItem("Billing")}
-                className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
-              >
-                Billing
-              </a>
-            </li>
-
-            <li>
-              <a
                 onClick={() => setOpenItem("Invoices")}
-                className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
+                className="block px-4 py-2 font-medium text-gray-500 no-underline rounded-lg cursor-pointer max-md:px-1 hover:bg-gray-100 hover:text-gray-700"
               >
                 Invoices
               </a>
             </li>
 
             <li>
+              <a
+                onClick={() => setOpenItem("Make Payment")}
+                className="block px-4 py-2 font-medium text-gray-500 no-underline rounded-lg cursor-pointer max-md:px-1 hover:bg-gray-100 hover:text-gray-700"
+              >
+                Make Payment
+              </a>
+            </li>
+
+            <li>
               <details className="group [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between px-4 py-2 text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700">
-                  <span className="text-sm font-medium"> Account </span>
+                <summary className="flex items-center justify-between px-4 py-2 text-gray-500 rounded-lg cursor-pointer max-md:px-1 hover:bg-gray-100 hover:text-gray-700">
+                  <span className="font-medium "> Account </span>
 
                   <span className="transition duration-300 shrink-0 group-open:-rotate-180">
                     <svg
@@ -93,7 +96,7 @@ function CustomerDash({ uid }) {
                   <li>
                     <a
                       onClick={() => setOpenItem("ManageUser")}
-                      className="block px-4 py-2 text-sm font-medium text-gray-500 no-underline rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
+                      className="block px-4 py-2 font-medium text-gray-500 no-underline rounded-lg cursor-pointer max-md:px-1 hover:bg-gray-100 hover:text-gray-700"
                     >
                       Manage
                     </a>
@@ -102,7 +105,7 @@ function CustomerDash({ uid }) {
                   <li>
                     <form>
                       <Link href="/login">
-                        <button className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700">
+                        <button className="w-full rounded-lg px-4 max-md:px-1 py-2  font-medium text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700">
                           Logout
                         </button>
                       </Link>
@@ -113,11 +116,11 @@ function CustomerDash({ uid }) {
             </li>
           </ul>
         </div>
-
-        <div className="sticky inset-x-0 bottom-0 border-t border-gray-100">
+        {/*profile info*/}
+        <div className="sticky inset-x-0 bottom-0 border-t border-gray-100 max-sm:w-full">
           <a
             href="#"
-            className="flex items-center gap-2 p-4 bg-white hover:bg-gray-50"
+            className="flex items-center gap-2 p-1 bg-white hover:bg-gray-50"
           >
             <div>
               <p className="text-xs">
@@ -132,8 +135,8 @@ function CustomerDash({ uid }) {
         </div>
       </div>
       {/*main content*/}
-      <div className="w-5/6">
-        {openItem === "ManageUser" ? <ManageUser id={uid} type={"Customer"}/> : ""}
+      <div className="flex justify-center w-5/6 max-md:w-4/5 max-sm:w-full">
+        {openItem === "ManageUser" ? <ManageUser id={uid} type={"Customer"}/> : openItem === "General" ? <BuildPizza userDTO={userDTO}/> : ""}
       </div>
     </div>
   );
